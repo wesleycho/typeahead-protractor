@@ -9,6 +9,10 @@ describe('typeahead-protractor App', () => {
 
   it('should display message saying app works', () => {
     page.navigateTo();
-    expect(page.getParagraphText()).toEqual('app works!');
+
+    return page.typeInTypeahead()
+      .then(() => {
+        expect(page.getMatches()).toEqual(4);
+      });
   });
 });
